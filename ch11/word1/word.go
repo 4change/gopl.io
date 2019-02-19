@@ -9,6 +9,7 @@ package word
 
 // IsPalindrome reports whether s reads the same forward and backward.
 // (Our first attempt.)
+// IsPalindrome()函数,用于判断一个字符串是否为回文字符串
 func IsPalindrome(s string) bool {
 	for i := range s {
 		if s[i] != s[len(s)-1-i] {

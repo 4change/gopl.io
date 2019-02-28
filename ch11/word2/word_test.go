@@ -75,6 +75,7 @@ import "math/rand"
 //!+random
 // randomPalindrome returns a palindrome whose length and contents
 // are derived from the pseudo-random number generator rng.
+// randomPalindrome返回一个回文字符串,它的长度和内容都是随机数生成器//rng生成的
 func randomPalindrome(rng *rand.Rand) string {
 	n := rng.Intn(25) // random length up to 24
 	runes := make([]rune, n)
@@ -88,6 +89,7 @@ func randomPalindrome(rng *rand.Rand) string {
 
 func TestRandomPalindromes(t *testing.T) {
 	// Initialize a pseudo-random number generator.
+	// 初始化一个伪随机数生成器
 	seed := time.Now().UTC().UnixNano()
 	t.Logf("Random seed: %d", seed)
 	rng := rand.New(rand.NewSource(seed))

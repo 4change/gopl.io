@@ -13,9 +13,11 @@ import (
 
 //!+
 func main() {
+	// 使用go语句创建一个goroutine, 该goroutine与主goroutine并发执行
 	go spinner(100 * time.Millisecond)
 	const n = 45
 	fibN := fib(n) // slow
+	// 主程序执行完毕后, 所有goroutine立即终止执行,程序退出
 	fmt.Printf("\rFibonacci(%d) = %d\n", n, fibN)
 }
 

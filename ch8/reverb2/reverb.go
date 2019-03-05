@@ -27,6 +27,7 @@ func echo(c net.Conn, shout string, delay time.Duration) {
 func handleConn(c net.Conn) {
 	input := bufio.NewScanner(c)
 	for input.Scan() {
+		// 对每一个本地输入, 单独开启一个协程进行输出处理
 		go echo(c, input.Text(), 1*time.Second)
 	}
 	// NOTE: ignoring potential errors from input.Err()
@@ -36,16 +37,19 @@ func handleConn(c net.Conn) {
 //!-
 
 func main() {
+	// 建立TCP服务器,监听本地8000端口
 	l, err := net.Listen("tcp", "localhost:8000")
 	if err != nil {
 		log.Fatal(err)
 	}
 	for {
+		// 本地服务器接收客户端连接, 开始进行通信
 		conn, err := l.Accept()
 		if err != nil {
 			log.Print(err) // e.g., connection aborted
 			continue
 		}
+		// 对每一个客户端连接请求, 单独开启一个协程进行处理
 		go handleConn(conn)
 	}
 }

@@ -15,6 +15,7 @@ var (
 )
 
 func Deposit(amount int) {
+	// 写锁, 独占锁, 不可重入
 	mu.Lock()
 	balance = balance + amount
 	mu.Unlock()

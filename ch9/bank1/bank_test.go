@@ -11,6 +11,7 @@ import (
 )
 
 func TestBank(t *testing.T) {
+	// 这里的定义是什么意思?
 	done := make(chan struct{})
 
 	// Alice

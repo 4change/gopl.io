@@ -8,13 +8,17 @@ package bank
 
 //!+
 var (
+	// 互斥信号量
 	sema    = make(chan struct{}, 1) // a binary semaphore guarding balance
+	// 由互斥信号量控制的变量
 	balance int
 )
 
 func Deposit(amount int) {
+	// 获取互斥信号量,相当于获取锁
 	sema <- struct{}{} // acquire token
 	balance = balance + amount
+	// 释放互斥信号量,相当于释放锁
 	<-sema // release token
 }
 

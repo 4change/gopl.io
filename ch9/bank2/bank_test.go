@@ -11,6 +11,7 @@ import (
 )
 
 func TestBank(t *testing.T) {
+	// 如下代码段的含义是?
 	// Deposit [1..1000] concurrently.
 	var n sync.WaitGroup
 	for i := 1; i <= 1000; i++ {

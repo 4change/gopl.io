@@ -13,14 +13,16 @@ import (
 )
 
 //!+
-
+// 火箭发送等待, 添加终止功能
 func main() {
 	// ...create abort channel...
 
 	//!-
 
 	//!+abort
+	// 创建一个可接收任何值的通道abort
 	abort := make(chan struct{})
+	// 创建新协程, 从标准输入读取数据
 	go func() {
 		os.Stdin.Read(make([]byte, 1)) // read a single byte
 		abort <- struct{}{}
@@ -30,6 +32,7 @@ func main() {
 	//!+
 	fmt.Println("Commencing countdown.  Press return to abort.")
 	select {
+	// 10s延时等待
 	case <-time.After(10 * time.Second):
 		// Do nothing.
 	case <-abort:

@@ -25,10 +25,10 @@ func echo(c net.Conn, shout string, delay time.Duration) {
 }
 
 func handleConn(c net.Conn) {
-	// 获取终端输入
+	// 从连接中获取输入
 	input := bufio.NewScanner(c)
 	for input.Scan() {
-		// 将终端输入复制到连接中, 并在客户端进行输出
+		// 输出连接中获取的数据
 		echo(c, input.Text(), 1*time.Second)
 	}
 	// NOTE: ignoring potential errors from input.Err()
@@ -36,7 +36,7 @@ func handleConn(c net.Conn) {
 }
 
 //!-
-
+// 并发回声服务器: 不支持并发输出
 func main() {
 	// 创建TCP服务器,监听本地8000端口
 	l, err := net.Listen("tcp", "localhost:8000")

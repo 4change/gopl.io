@@ -27,7 +27,7 @@ func echo(c net.Conn, shout string, delay time.Duration) {
 func handleConn(c net.Conn) {
 	input := bufio.NewScanner(c)
 	for input.Scan() {
-		// 对每一个本地输入, 单独开启一个协程进行输出处理
+		// 并发输出
 		go echo(c, input.Text(), 1*time.Second)
 	}
 	// NOTE: ignoring potential errors from input.Err()
@@ -35,7 +35,7 @@ func handleConn(c net.Conn) {
 }
 
 //!-
-
+// 并发回声服务器: 支持并发输出
 func main() {
 	// 建立TCP服务器,监听本地8000端口
 	l, err := net.Listen("tcp", "localhost:8000")

@@ -11,6 +11,7 @@ Go中功能测试函数必须以Test作为前缀
 */
 func TestPalindrome(t *testing.T) {
 	if !IsPalindrome("detartrated") {
+		// t.Error()方法, 输出测试中的错误信息
 		t.Error(`IsPalindrome("detartrated") = false`)
 	}
 	if !IsPalindrome("kayak") {

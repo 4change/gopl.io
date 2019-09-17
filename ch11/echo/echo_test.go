@@ -27,8 +27,7 @@ func TestEcho(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		descr := fmt.Sprintf("echo(%v, %q, %q)",
-			test.newline, test.sep, test.args)
+		descr := fmt.Sprintf("echo(%v, %q, %q)", test.newline, test.sep, test.args)
 
 		out = new(bytes.Buffer) // captured output
 		if err := echo(test.newline, test.sep, test.args); err != nil {

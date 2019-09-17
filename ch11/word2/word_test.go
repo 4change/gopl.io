@@ -79,7 +79,7 @@ import "math/rand"
 func randomPalindrome(rng *rand.Rand) string {
 	n := rng.Intn(25) // random length up to 24
 	runes := make([]rune, n)
-	for i := 0; i < (n+1)/2; i++ {
+	for i := 0; i < (n+1)/2; i++ {					// 这一段是什么操作？简直没看懂
 		r := rune(rng.Intn(0x1000)) // random rune up to '\u0999'
 		runes[i] = r
 		runes[n-1-i] = r
@@ -90,8 +90,8 @@ func randomPalindrome(rng *rand.Rand) string {
 func TestRandomPalindromes(t *testing.T) {
 	// Initialize a pseudo-random number generator.
 	// 初始化一个伪随机数生成器
-	seed := time.Now().UTC().UnixNano()
-	t.Logf("Random seed: %d", seed)
+	seed := time.Now().UTC().UnixNano()				// 随机数的种子
+	t.Logf("Random seed--------------------------------------------------------------------------------%d", seed)
 	rng := rand.New(rand.NewSource(seed))
 
 	for i := 0; i < 1000; i++ {

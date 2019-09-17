@@ -17,7 +17,7 @@ import "testing"
 
 //!+test
 func TestIsPalindrome(t *testing.T) {
-	var tests = []struct {
+	var tests = []struct {								// 基于表进行多组测试
 		input string
 		want  bool
 	}{

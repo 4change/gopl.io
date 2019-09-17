@@ -18,8 +18,8 @@ func IsPalindrome(s string) bool {
 	var letters []rune
 	// 提付字符串s中的字母字符
 	for _, r := range s {
-		if unicode.IsLetter(r) {
-			letters = append(letters, unicode.ToLower(r))
+		if unicode.IsLetter(r) {								// 判断字符是否为字母
+			letters = append(letters, unicode.ToLower(r))		// 字符转小写
 		}
 	}
 	for i := range letters {

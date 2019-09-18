@@ -16,6 +16,7 @@ func TestCoverage(t *testing.T) {
 		env   Env
 		want  string // expected error from Parse/Check or result from Eval
 	}{
+		{"+x * -x", Env{"x": 2}, "-4"},					// 一元表达式测试用例
 		{"x % 2", nil, "unexpected '%'"},
 		{"!true", nil, "unexpected '!'"},
 		{"log(10)", nil, `unknown function "log"`},
